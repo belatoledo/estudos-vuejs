@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Project 01 | Vue 💚 Zero to Hero</title>
+ <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+ <div id="app">
+  <h1>Hello World!</h1>
+  <p>This is the {{name}} developing in VueJs. </p>
+  <p> {{welcomeYou()}} </p>
+  <p><a v-bind:href="firstSteps">Clique aqui</a>  para os primeiros passos no projeto :)</p>
+
+  <h3>1. Using the bind v-on</h3>
+  <p>User: {{user}} </p>
+  <button v-on:click="changeUser">Change user</button>
+
+  <h4>Using the bind v-on with params</h4>
+  <p>Password: {{pass}}</p>
+  <button v-on:click="changePass(123456)">Change password</button>
+ 
+  <h3>2. Using the v-model (two-way  data Binding)</h3>
+  <p> Try change a msg: {{msg}} </p>
+  <input v-model="msg" />
+</div>
+
+ <script>
+
+  new Vue({
+   el: "#app",
+   data() {
+    return {
+     name: "Projeto 01",
+     you: "Bela", 
+     user: "Administrator",
+     pass: "abcd",
+     firstSteps: "https://www.udemy.com/course/curso-vuejs-completo/learn/lecture/21243394#overview",
+     msg: "Here",
+    }
+   },
+   methods: {
+    welcomeYou() {
+     return "Welcome to the " + this.name + ", " + this.you + "!"
+    },
+    changeUser() {
+    this.user = "Izabela Toledo";
+   },
+   changePass(numbers) {
+    this.pass = numbers;
+   }
+  }
+})
+   
+ </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Pratice 1: Counter</title>
+ <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+ <div id="app">
+  <h1>Counter</h1>
+  <button v-on:click="subtraction(10)">-</button>
+   <span> {{number}} </span>
+  <button v-on:click="sum(10)">+</button>
+ </div>
+
+ <script>
+
+  new Vue({
+   el: "#app",
+   data() {
+    return {
+     number: 0,
+    }
+   },
+   methods: {
+    sum(valor) {
+     this.number += valor;
+    },
+    subtraction(valor) {
+     this.number -= valor;
+    }
+   },
+})
+   
+ </script>
+</body>
+</html>
