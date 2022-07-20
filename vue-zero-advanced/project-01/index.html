@@ -42,8 +42,11 @@
   <h3>4. Using watchs</h3>
   <p>Minha fruta favorita: {{fruit}}</p>
   <h6>Clique na soma anterior e mude sua fruta!</h6>
-
-
+  
+  <h3>5. Dynamic classes with CSS</h3>
+  <!--Se a classe com bind tiver o nome com caracter especial, é preciso usar aspas no nome para não gerar erro-->
+    <button class="box" v-on:click="changeBox" v-bind:class="{active: btnStatus}"></button>
+    <button v-on:click="changeBox">Aperte aqui</button>
 </div>
 
  <script>
@@ -59,7 +62,8 @@
      firstSteps: "https://www.udemy.com/course/curso-vuejs-completo/learn/lecture/21243394#overview",
      msg: "Here",
      number: 10,
-     fruit: '🍇'
+     fruit: '🍇',
+     btnStatus: false,
     }
    },
    methods: {
@@ -75,6 +79,10 @@
    addEmoji() {
     this.you += ' 🍉'
    },
+   changeBox() {
+    this.btnStatus = !this.btnStatus
+    console.log(this.btnStatus)
+   }
   },
   computed: {
     howManyLetters() {
@@ -97,3 +105,48 @@
  </script>
 </body>
 </html>
+
+<style>
+  #app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  input  {
+    width: 180px;
+    height: 35px;
+    background: cornsilk;
+    border: 1px solid coral;
+    outline: none;
+  }
+  button {
+    width: 180px;
+    height: 35px;
+    font-weight: bold;
+    color: black;
+    background: #f8bcda;
+    border: 2px solid hotpink;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  .box {
+    margin-bottom: 15px;
+    margin-left: 30px;
+    width: 120px;
+    height: 120px;
+    background: greenyellow;
+    border: none;
+    outline: none;
+  }
+
+  .active {
+    width: 120px;
+    height: 120px;
+    background: orangered;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+  }
+</style>
