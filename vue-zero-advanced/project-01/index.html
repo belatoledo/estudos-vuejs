@@ -11,42 +11,51 @@
 <body>
  <div id="app">
   <h1>Hello World!</h1>
-  <p>This is the {{name}} developing in VueJs. </p>
-  <p> {{welcomeYou()}} </p>
-  <p><a v-bind:href="firstSteps" target="_blank">Clique aqui</a>  para os primeiros passos no projeto :)</p>
+    <p>This is the {{name}} developing in VueJs. </p>
+    <p> {{welcomeYou()}} </p>
+    <p><a :href="firstSteps" target="_blank">Clique aqui</a>  para os primeiros passos no projeto :)</p>
 
   <h3>1. Using the bind v-on</h3>
-  <p>User: {{user}} </p>
-  <button v-on:click="changeUser">Change user</button>
+  <h5 class="shorts">Shorthand for v-bind : </h5>
+  <h5 class="shorts">Shorthand for v-on   @</h5>
+    <p>User: {{user}} </p>
+    <button @click="changeUser">Change user</button>
 
-  <h4>Using the bind v-on with params</h4>
-  <p>Password: {{pass}}</p>
-  <button v-on:click="changePass(123456)">Change password</button>
+    <h4>Using the bind v-on with params</h4>
+    <p>Password: {{pass}}</p>
+    <button @click="changePass(123456)">Change password</button>
  
   <h3>2. Using the v-model (two-way data Binding)</h3>
-  <p> Try change a msg: {{msg}} </p>
-  <input v-model="msg" />
+    <p> Try change a msg: {{msg}} </p>
+    <input v-model="msg" />
 
   <h3>3. Using computed properties</h3>
-  <h4>Com computed:</h4>
-  <h2>{{you}}</h5>
-  <p>Quantas letras: {{howManyLetters}}</p>
-  <h6>*OBS: O EMOJI ADICIONA MAIS 3 CARACTERES</BR> E A COMPUTED É CHAMADA NO CONSOLE *</h6>
-  <button v-on:click="addEmoji">Adicione uma 🍉</button>
+    <h4>Com computed:</h4>
+    <h2>{{you}}</h5>
+    <p>Quantas letras: {{howManyLetters}}</p>
+    <h6>*OBS: O EMOJI ADICIONA MAIS 3 CARACTERES</BR> E A COMPUTED É CHAMADA NO CONSOLE *</h6>
+    <button @click="addEmoji">Adicione uma 🍉</button>
 
-  <h4>Sem computed:</h4>
-  <h2>{{number}}</h2>
-  <h6>*OBS: AO SOMAR A COMPUTED NÃO ESTÁ SENDO CHAMADA NO CONSOLE*</h6>
-  <button v-on:click="number++">Clique na 🍉 para somar</button>
+    <h4>Sem computed:</h4>
+    <h2>{{number}}</h2>
+    <h6>*OBS: AO SOMAR A COMPUTED NÃO ESTÁ SENDO CHAMADA NO CONSOLE*</h6>
+    <button @click="number++">Clique na 🍉 para somar</button>
 
   <h3>4. Using watchs</h3>
-  <p>Minha fruta favorita: {{fruit}}</p>
-  <h6>Clique na soma anterior e mude sua fruta!</h6>
-  
+    <p>Minha fruta favorita: {{fruit}}</p>
+    <h6>Clique na soma anterior e mude sua fruta!</h6>
+    
   <h3>5. Dynamic classes with CSS</h3>
   <!--Se a classe com bind tiver o nome com caracter especial, é preciso usar aspas no nome para não gerar erro-->
-    <button class="box" v-on:click="changeBox" v-bind:class="{active: btnStatus}"></button>
-    <button v-on:click="changeBox">Aperte aqui</button>
+    <button class="box" @click="changeBox" :class="{active: btnStatus}"></button>
+    <button @click="changeBox">Aperte aqui</button>
+
+  <h3>6. Using v-if and v-else</h3>
+    <h2 v-if="auth">Welcome, {{you}}!</h2>
+    <p v-else>Hello visitor! Login to acess the aplication.</p>
+    <button @click="auth = !auth">
+      {{auth ? 'Logoff' : 'Login'}}
+    </button>
 </div>
 
  <script>
@@ -64,6 +73,7 @@
      number: 10,
      fruit: '🍇',
      btnStatus: false,
+     auth: false,
     }
    },
    methods: {
@@ -113,6 +123,16 @@
     justify-content: center;
   }
 
+  h3 {
+    margin: 25px 0 -2px 0;
+  }
+
+  .shorts {
+    margin: 2px;
+    color: palevioletred;
+    font-weight: bold;
+  }
+
   input  {
     width: 180px;
     height: 35px;
@@ -132,8 +152,7 @@
   }
 
   .box {
-    margin-bottom: 15px;
-    margin-left: 30px;
+    margin: 15px 0 15px 30px;
     width: 120px;
     height: 120px;
     background: greenyellow;
