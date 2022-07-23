@@ -52,9 +52,13 @@
 
   <h3>6. Using v-if and v-else</h3>
     <h2 v-if="auth">Welcome, {{you}}!</h2>
-    <p v-else>Hello visitor! Login to acess the aplication.</p>
+    <p v-else-if="visitor">Hello visitor! Login to acess the aplication.</p>
+    <p v-else>No one user is logged.</p>
     <button @click="auth = !auth">
       {{auth ? 'Logoff' : 'Login'}}
+    </button>
+    <button @click="visitor = !visitor">
+      {{visitor ? 'Visitor logoff' : 'Visitor login'}}
     </button>
 </div>
 
@@ -74,6 +78,7 @@
      fruit: '🍇',
      btnStatus: false,
      auth: false,
+     visitor: false,
     }
    },
    methods: {
@@ -143,6 +148,7 @@
   button {
     width: 180px;
     height: 35px;
+    margin: 4px;
     font-weight: bold;
     color: black;
     background: #f8bcda;
