@@ -4,7 +4,7 @@
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Project 01 | Vue 💚 Zero to Hero</title>
+ <title>Studies Vue 💚 | Zero to Hero</title>
  <link rel="icon" href="./favicon.ico" type="image/x-icon">
  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
@@ -33,24 +33,24 @@
     <h4>Com computed:</h4>
     <h2>{{you}}</h5>
     <p>Quantas letras: {{howManyLetters}}</p>
-    <h6>*OBS: O EMOJI ADICIONA MAIS 3 CARACTERES</BR> E A COMPUTED É CHAMADA NO CONSOLE *</h6>
+    <h6>❗ O EMOJI ADICIONA MAIS 3 CARACTERES</BR> E A COMPUTED É CHAMADA NO CONSOLE </h6>
     <button @click="addEmoji">Adicione uma 🍉</button>
 
     <h4>Sem computed:</h4>
     <h2>{{number}}</h2>
-    <h6>*OBS: AO SOMAR A COMPUTED NÃO ESTÁ SENDO CHAMADA NO CONSOLE*</h6>
+    <h5>📌 OBS: AO SOMAR A COMPUTED NÃO ESTÁ SENDO CHAMADA NO CONSOLE*</h5>
     <button @click="number++">Clique na 🍉 para somar</button>
 
   <h3>4. Using watchs</h3>
     <p>Minha fruta favorita: {{fruit}}</p>
-    <h6>Clique na soma anterior e mude sua fruta!</h6>
+    <h5>Clique na soma anterior e mude sua fruta!</h5>
     
   <h3>5. Dynamic classes with CSS</h3>
   <!--Se a classe com bind tiver o nome com caracter especial, é preciso usar aspas no nome para não gerar erro-->
     <button class="box" @click="changeBox" :class="{active: btnStatus}"></button>
     <button @click="changeBox">Aperte aqui</button>
 
-  <h3>6. Using v-if and v-else</h3>
+  <h3>6. Using v-if / v-else-if & v-else</h3>
     <h2 v-if="auth">Welcome, {{you}}!</h2>
     <p v-else-if="visitor">Hello visitor! Login to acess the aplication.</p>
     <p v-else>No one user is logged.</p>
@@ -60,6 +60,27 @@
     <button @click="visitor = !visitor">
       {{visitor ? 'Visitor logoff' : 'Visitor login'}}
     </button>
+    <h6>📌 OBS: As diretivas condicionais alteram a árvore de elementos da DOM.</h6>
+
+  <h3>Using v-show</h3>
+    <h2 v-show="!visitor">If you not is logged like a visitor you see me...</h2>
+    <h2 v-show="visitor">If you logged... Learning Vue.js in practice! 💚</h2>
+    <h6>📌 OBS: O elemento não é alterado na árvore DOM, apenas está escondido por um display none.</h6>
+  
+  <h3>Working with dynamic lists I</h3>
+    <p>Simple list in array</p>
+    <ul>
+      <li v-for="(tech, index) in techs" :key="tech"> {{index}}: {{tech}} </li>
+    </ul>
+
+    <p>List of objects in array</p>
+    <div v-for="student in students" :key="student.id">
+      <p> {{student.id}}: {{student.name}}
+        <br>
+      <span :class="[{approved: student.status === 'Approved'}, {reproved: student.status === 'Reproved'}]"> {{student.status}}</span>
+      </p>
+
+    </div>
 </div>
 
  <script>
@@ -79,6 +100,24 @@
      btnStatus: false,
      auth: false,
      visitor: false,
+     techs: ['JavaScript', 'PHP', 'Vue.js', 'Node.js', 'Reach JS', 'Java'],
+     students: [
+      {
+        id: 1,
+        name: 'Ana',
+        status: 'Approved' 
+      },
+      {
+        id: 2,
+        name: 'Rowan',
+        status: 'Approved'
+      },
+      {
+        id: 3,
+        name: 'Ciri',
+        status: 'Reproved'
+      }
+     ],
     }
    },
    methods: {
@@ -173,5 +212,15 @@
     border: none;
     outline: none;
     border-radius: 50%;
+  }
+
+  .approved {
+    color:#1bba2b;
+    font-weight: bold;
+  }
+
+  .reproved {
+    color: #c60303;
+    font-weight: bold;
   }
 </style>
