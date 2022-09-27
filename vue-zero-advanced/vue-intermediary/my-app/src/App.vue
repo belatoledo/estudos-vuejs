@@ -1,28 +1,72 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Welcome to the first Vue.js project!⭐</h1>
+    <User :lastname="lastname" class="text"/>
+    <p>Description: {{desc}} </p>
+    <button @click="login">LOGIN</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import User from './components/User.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    User,
+
+  },
+  data() {
+    return {
+      lastname: '',
+      desc: ''
+    }
+  },
+  methods: {
+  login(){
+    this.lastname = 'Toledo'
+    this.desc = 'This is a test project. Welcome! 🙋‍♂️'
   }
+ },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    }
+
+  #app {
+    padding: 8px;
+    width: 100vw;
+    height: 100vh;
+    background: #0e0e0e;
+    color: whitesmoke;
+    }
+
+  h1 {
+    padding: 8px 0;
+  }
+
+  .text {
+    padding-bottom: 8px;
+  }
+
+  button {
+    margin: 20px 0;
+    padding: 12px 60px;
+    font-size: 16px;
+    font-weight: 600;
+    color: whitesmoke;
+    background: none;
+    border: 2px solid hotpink;
+    border-radius: 4px;
+  }
+
+  button:hover {
+    color: hotpink;
+    border: 2px dotted hotpink;
+
+    transition: .7s;
+  }
 </style>
