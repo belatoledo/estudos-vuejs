@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <h1>Welcome to the first Vue.js project!⭐</h1>
-    <User :lastname="lastname" class="text"/>
-    <p>Description: {{desc}} </p>
+    <h3>Component App: {{name}}</h3>
     <button @click="login">LOGIN</button>
+
+    <User :name="name" @nameUser="name = $event" class="text"/>
   </div>
 </template>
 
@@ -13,18 +14,15 @@ export default {
   name: 'App',
   components: {
     User,
-
   },
   data() {
     return {
-      lastname: 'Toledo',
-      desc: ''
+      name: 'Izabela',
     }
   },
   methods: {
   login(){
-    this.lastname = 'Toledo'
-    this.desc = 'This is a test project. Welcome! 🙋‍♂️'
+    this.name = 'Carolina'
   }
  },
 }

@@ -1,26 +1,27 @@
 <template>
  <div id="user">
-  <h2>Author: <span>{{name}} {{lastname.split('')}}</span></h2>
+  <h3>Component user: <span>{{name}}</span></h3>
+ <button @click="changeName">CHANGE NAME</button>
  </div>
 </template>
 
 <script>
 export default {
- name: 'User',
- props: {
-  lastname: {
-   type: String,
-   required: true
+name: 'User',
+props: {
+  name: {
+    type: String,
+    required: false
   }
- },
- //without validation → props: ['lastname'],
- data() {
-  return {
-   name: 'Izabela'
-  }
- },
+},
+ methods: {
+   changeName() {
+    this.name = 'Izabela'
+		this.$emit('nameUser', this.name)
+   }
+  },
 }
-</script>
+  </script>
 
 <style scoped>
 span {
