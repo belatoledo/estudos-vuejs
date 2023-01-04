@@ -8,6 +8,14 @@
       <button class="btn" @click="clean">CLEAN</button>
     </div>
 
+    <div class="history" v-show="history.length > 0">
+      <h4>History</h4>
+      <ul>
+        <li v-for="item in history" :key="item">Timer paused in {{item}}</li>
+      </ul>
+      <button @click="history = []">Clean history</button>
+    </div>
+
   </div>
 </template>
 
@@ -23,6 +31,7 @@ export default {
       ss: 0,
       mm: 0,
       hh: 0,
+      history: []
     }
   },
   methods: {
@@ -31,15 +40,29 @@ export default {
         clearInterval(this.timer) 
         this.timer = null 
         this.btnStart = 'START'
-      } else {
+        
+        if(this.ss !== 0) {
+        this.history.push(this.number)
+        }
+      } 
+      else {
         this.timer = setInterval(() => { 
           this.initTimer();
-        }, 1000);
+        }, 100);
         this.btnStart = 'PAUSE'
       }
     },
     clean() {
-
+      if(this.timer !== null) {
+          clearInterval(this.timer)
+          this.timer = null
+      }
+      this.ss = 0
+      this.mm = 0
+      this.hh = 0
+      this.number = 0
+      this.btnStart = 'START'
+      this.history = []
     },
     initTimer() {
       this.ss++
@@ -97,9 +120,9 @@ export default {
 .btn {
   width: 150px;
   margin: 0 15px;
-  padding: 10px;
-  background: transparent;
-  border: 2px solid lightseagreen;
+  padding: 6px 12px;
+  background: lightseagreen;
+  border: none;
   border-radius: 4px;
   font-size: 20px;
   color: aliceblue;
@@ -110,7 +133,41 @@ export default {
 }
 
 .btn:hover {
-  background: lightseagreen;
+  background: rgba(32, 178, 171, 0.914);
   transition: .4s ease-in-out;
+}
+
+.history {
+  margin-top: 30px;
+}
+
+ul {
+  text-align: left;
+  padding: 0;
+}
+
+h4 {
+  color: white;
+}
+
+ul li  {
+  margin-top: 4px;
+  padding: 12px 48px;
+  background-color: rgba(156, 156, 156, 0.1);
+  border-radius: 4px;
+  list-style: none;
+  color: lightseagreen ;
+}
+
+.history button {
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 4px;
+  background-color: aliceblue;
+  font-size: 14px;
+  font-weight: bold;
+  float: right;
+  
+
 }
 </style>
