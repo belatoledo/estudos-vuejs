@@ -57,11 +57,6 @@
       </v-btn>
     </v-app-bar>
 
-    <!-- <v-app-bar app clipped-left>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Menu</v-toolbar-title>
-    </v-app-bar> -->
-
     <v-main>
       <router-view />
     </v-main>

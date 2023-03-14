@@ -7,7 +7,7 @@ const routes = [
   {
     path: "/",
     name: "tasks",
-    component: () => import("../views/TasksView.vue"),
+    component: () => import("../views/TasksPage.vue"),
   },
   {
     path: "/about",
